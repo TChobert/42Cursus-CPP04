@@ -26,7 +26,7 @@ Animal::Animal(const Animal& other) {
 Animal&	Animal::operator=(const Animal& other) {
 	if (this != &other) {
 		this->_type = other._type;
-		std::cout << "Animal: copy constructor called" << std::endl;
+		std::cout << "Animal: affectation operator called" << std::endl;
 	}
 	return (*this);
 }
