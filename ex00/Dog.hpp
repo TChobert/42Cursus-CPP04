@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 17:59:57 by tchobert          #+#    #+#             */
-/*   Updated: 2025/05/26 18:00:20 by tchobert         ###   ########.fr       */
+/*   Created: 2025/05/27 13:56:15 by tchobert          #+#    #+#             */
+/*   Updated: 2025/05/27 13:57:33 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 # include "Animal.hpp"
 
-class Cat : public Animal {
+class Dog : public Animal {
 
 	public:
 
-	Cat(void);
-	Cat(const Cat& other);
-	Cat&	operator=(const Cat& other);
-	~Cat(void);
+	Dog(void);
+	Dog(const Dog& other);
+	Dog&	operator=(const Dog& other);
+	~Dog(void);
 
 	void	makeSound(void) const;
 };
