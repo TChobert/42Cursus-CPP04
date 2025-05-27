@@ -30,3 +30,11 @@ WrongCat&	WrongCat::operator=(const WrongCat& other) {
 	}
 	return (*this);
 }
+
+WrongCat::~WrongCat(void) {
+	std::cout << "WrongCat: default constructor called" << std::endl;
+}
+
+void	WrongCat::makeSound(void) const {
+	std::cout << "Mooooooo" << std::endl;
+}
