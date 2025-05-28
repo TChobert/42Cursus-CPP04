@@ -17,37 +17,37 @@
 Dog::Dog(void) : Animal() {
 	_type = "Dog";
 	_brain = new Brain;
-	std::cout << "Dog: default constructor called" << std::endl;
+	std::cout << YELLOW << "Dog: default constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other) {
 	this->_type = other._type;
-	if (this->_brain != nullptr) {
+	if (this->_brain != NULL) {
 		delete this->_brain;
 	}
 	this->_brain = new Brain(*other._brain);
-	std::cout << "Dog: copy constructor called" << std::endl;
+	std::cout << YELLOW << "Dog: copy constructor called" << RESET << std::endl;
 }
 
 Dog&	Dog::operator=(const Dog& other) {
 	if (this != &other) {
 		this->_type = other._type;
-		if (this->_brain != nullptr) {
+		if (this->_brain != NULL) {
 			delete this->_brain;
 		}
 		this->_brain = new Brain(*other._brain);
-		std::cout << "Dog: assignement operator called" << std::endl;
+		std::cout << YELLOW << "Dog: assignement operator called" << RESET << std::endl;
 	}
 	return (*this);
 }
 
 Dog::~Dog(void) {
 	delete _brain;
-	std::cout << "Dog: destructor called" << std::endl;
+	std::cout << YELLOW << "Dog: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
 
 void	Dog::makeSound(void) const {
-	std::cout << "Bark" << std::endl;
+	std::cout << YELLOW << "Bark" << RESET << std::endl;
 }

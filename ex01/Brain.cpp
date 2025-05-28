@@ -16,14 +16,14 @@ Brain::Brain(void) {
 	for (size_t i = 0; i < sizeof(_ideas) / sizeof(_ideas[0]); ++i) {
 		_ideas[i] = "Some idea";
 	}
-	std::cout << "Brain: default constructor called" << std::endl;
+	std::cout << RED << "Brain: default constructor called" << RESET << std::endl;
 }
 
 Brain::Brain(const Brain& other) {
 	for (size_t i = 0; i < sizeof(_ideas) / sizeof (_ideas[0]); ++i) {
 		this->_ideas[i] = other._ideas[i];
 	}
-	std::cout << "Brain: copy constructor called" << std::endl;
+	std::cout << RED << "Brain: copy constructor called" << RESET << std::endl;
 }
 
 Brain&	Brain::operator=(const Brain& other) {
@@ -31,11 +31,28 @@ Brain&	Brain::operator=(const Brain& other) {
 		for (size_t i = 0; i < sizeof(_ideas) / sizeof(_ideas[0]); ++i) {
 			this->_ideas[i] = other._ideas[i];
 		}
-		std::cout << "Brain: assignement operator called" << std::endl;
+		std::cout << RED << "Brain: assignement operator called" << RESET << std::endl;
 	}
 	return (*this);
 }
 
 Brain::~Brain(void) {
-	std::cout << "Brain: destructor called" << std::endl;
+	std::cout << RED << "Brain: destructor called" << RESET << std::endl;
+}
+
+///// GETTERS /////
+
+size_t	Brain::getIdeasSize(void) const {
+	size_t	size = 0;
+
+	size = sizeof(_ideas) / sizeof(_ideas[0]);
+	return (size);
+}
+
+std::string	Brain::getIdea(size_t index) const {
+	return (_ideas[index]);
+}
+
+void	Brain::displayIdeasFirstAddress(void) const {
+	std::cout << &_ideas[0] << std::endl;
 }

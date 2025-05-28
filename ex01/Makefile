@@ -35,6 +35,7 @@ SRCS += Cat.cpp
 SRCS += Dog.cpp
 SRCS += WrongAnimal.cpp
 SRCS += WrongCat.cpp
+SRCS += Brain.cpp
 
 ## INCLUDES ##
 
@@ -45,6 +46,7 @@ INCLUDES += Cat.hpp
 INCLUDES += Dog.hpp
 INCLUDES += WrongAnimal.hpp
 INCLUDES += WrongCat.hpp
+INCLUDES += Brain.hpp
 
 ## OBJECTS ##
 

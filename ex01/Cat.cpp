@@ -16,28 +16,38 @@
 
 Cat::Cat(void) : Animal() {
 	_type = "Cat";
-	std::cout << "Cat: default constructor called" << std::endl;
+	_brain = new Brain;
+	std::cout << BLUE << "Cat: default constructor called" << RESET << std::endl;
 }
 
-Cat::Cat(const Cat& other) : Animal(other) {
+Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain)) {
 	this->_type = other._type;
-	std::cout << "Cat: copy constructor called" << std::endl;
+	std::cout << BLUE << "Cat: copy constructor called" << RESET << std::endl;
 }
 
 Cat&	Cat::operator=(const Cat& other) {
 	if (this != &other) {
 		Animal::operator=(other);
-		std::cout << "Cat: affectation operator called" << std::endl;
+		if (this->_brain != NULL) {
+			delete this->_brain;
+		}
+		this->_brain = new Brain(*other._brain);
+		std::cout << BLUE << "Cat: affectation operator called" << RESET << std::endl;
 	}
 	return (*this);
 }
 
 Cat::~Cat(void) {
-	std::cout << "Cat: destructor called" << std::endl;
+	delete _brain;
+	std::cout << BLUE << "Cat: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
 
 void	Cat::makeSound(void) const {
-	std::cout << "Meow" << std::endl;
+	std::cout << BLUE << "Meow" << RESET << std::endl;
+}
+
+void	Cat::displayBrainLoc(void) {
+	_brain->displayIdeasFirstAddress();
 }
