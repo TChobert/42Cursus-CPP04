@@ -41,9 +41,14 @@ int	main(void) {
 	Animal*	animals[100];
 	Cat	originalCat;
 	Cat	copyCat(originalCat);
-
+	Dog	originaDog;
+	Dog	dogAffected;
+	
+	dogAffected = originaDog;
 	originalCat.displayBrainLoc();
 	copyCat.displayBrainLoc();
+	originaDog.displayBrainLoc();
+	dogAffected.displayBrainLoc();
 
 	std::cout << std::endl << "-------------" << std::endl;
 	for (size_t i = 0; i < 50; ++i) {

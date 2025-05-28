@@ -20,12 +20,8 @@ Dog::Dog(void) : Animal() {
 	std::cout << YELLOW << "Dog: default constructor called" << RESET << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal(other) {
+Dog::Dog(const Dog& other) : Animal(other), _brain(new Brain(*other._brain)) {
 	this->_type = other._type;
-	if (this->_brain != NULL) {
-		delete this->_brain;
-	}
-	this->_brain = new Brain(*other._brain);
 	std::cout << YELLOW << "Dog: copy constructor called" << RESET << std::endl;
 }
 
@@ -50,4 +46,8 @@ Dog::~Dog(void) {
 
 void	Dog::makeSound(void) const {
 	std::cout << YELLOW << "Bark" << RESET << std::endl;
+}
+
+void	Dog::displayBrainLoc(void) const {
+	_brain->displayIdeasFirstAddress();
 }

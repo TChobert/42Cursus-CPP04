@@ -37,6 +37,7 @@ class Dog : public Animal {
 	~Dog(void);
 
 	void	makeSound(void) const;
+	void	displayBrainLoc(void) const;
 };
 
 #endif
