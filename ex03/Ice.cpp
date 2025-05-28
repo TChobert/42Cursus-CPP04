@@ -16,19 +16,17 @@ Ice::Ice(void) : AMateria("ice") {
 	//std::cout << "Ice: default constructor called" << std::endl;
 }
 
-Ice::Ice(std::string const & type) : AMateria(type) {
-	//std::cout << "Ice: parametrized constructor called" << std::endl;
-}
+// Ice::Ice(std::string const & type) : AMateria(type) {
+// 	//std::cout << "Ice: parametrized constructor called" << std::endl;
+// }
 
 Ice::Ice(const Ice& other) : AMateria(other) {
-	this->_type = other._type;
 	//std::cout << "Ice: copy constructor called" << std::endl;
 }
 
 Ice&	Ice::operator=(const Ice& other) {
 	if (this != &other) {
 		AMateria::operator=(other);
-		this->_type = other._type;
 		//std::cout << "Ice: affectation operator called" << std::endl;
 	}
 	return (*this);

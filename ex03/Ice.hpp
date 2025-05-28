@@ -20,7 +20,7 @@ class Ice : public AMateria {
 	public:
 
 	Ice(void);
-	Ice(const std::string const & type);
+	Ice(std::string const & type);
 	Ice(const Ice& other);
 	Ice&	operator=(const Ice& other);
 	~Ice(void);

@@ -16,19 +16,17 @@ Cure::Cure(void) : AMateria("cure") {
 	//std::cout << "Cure: default constructor called" << std::endl;
 }
 
-Cure::Cure(std::string const & type) : AMateria(type) {
-	//std::cout << "Cure: parametrized constructor called" << std::endl;
-}
+// Cure::Cure(std::string const & type) : AMateria(type) {
+// 	//std::cout << "Cure: parametrized constructor called" << std::endl;
+// }
 
 Cure::Cure(const Cure& other) : AMateria(other) {
-	this->_type = other._type;
 	//std::cout << "Cure: copy constructor called" << std::endl;
 }
 
 Cure&	Cure::operator=(const Cure& other) {
 	if (this != &other) {
 		AMateria::operator=(other);
-		this->_type = other._type;
 		//std::cout << "Cure: assignement operator called" << std::endl;
 	}
 	return (*this);
