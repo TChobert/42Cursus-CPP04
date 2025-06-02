@@ -111,3 +111,9 @@ void	Character::deleteUnequipedMaterials(void) {
 	_unequipedMaterials = NULL;
 	_unequipedMaterialsCount = 0;
 }
+
+void	Character::equip(AMateria* m) {
+	if (m == NULL) {
+		std::cout << _name << " cannot equip a NULL materia!" << std::endl;
+	}
+}
