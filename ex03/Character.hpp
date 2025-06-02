@@ -15,12 +15,16 @@
 
 # include "ICharacter.hpp"
 
+# define INVENTORY_SIZE 4
+
 class Character : public ICharacter {
 
 	private:
 
 	std::string	_name;
 	AMateria	*_inventory[4];
+	AMateria	**_unequipedMaterials;
+	size_t		_unequipedMaterialsCount;
 
 	public:
 
@@ -32,6 +36,11 @@ class Character : public ICharacter {
 	void	equip(AMateria* m);
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
+	void	setInventory(void);
+	void	deleteInventory(void);
+	void	copyInventory(AMateria * const otherInventory[]);
+	void	copyUnequipedMaterials(AMateria * const otherDroppedMaterials[]);
+	void	deleteUnequipedMaterials(void);
 };
 
 #endif
