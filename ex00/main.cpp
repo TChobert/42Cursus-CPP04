@@ -21,16 +21,22 @@ int	main(void) {
 	const Animal* j = new Dog();
 	//const Animal* i = new Cat();
 	const WrongAnimal* i = new WrongCat();
-	const Cat	Cat;
+	const Cat	CatTest;
+	Cat			AffectCat;
+	Dog			CopyDog(*dynamic_cast<const Dog*>(j));
 
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << Cat.getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	Cat.makeSound(); //idem
+	AffectCat = CatTest;
+	std::cout << meta->getType() << " " << std::endl; // Animal
+	std::cout << j->getType() << " " << std::endl; // Dog
+	std::cout << i->getType() << " " << std::endl; // WrongCat
+	std::cout << CatTest.getType() << " " << std::endl; // Cat
+	std::cout << AffectCat.getType() << " " << std::endl; // Cat
+	std::cout << CopyDog.getType() << " " << std::endl; // Dog
+	i->makeSound(); // will output the wrong cat sound!
+	AffectCat.makeSound(); // Cat sound
 	j->makeSound(); // Dog sound
 	meta->makeSound(); // Animal sound
+	CopyDog.makeSound(); // Dog Sound
 	delete meta;
 	delete j;
 	delete i;

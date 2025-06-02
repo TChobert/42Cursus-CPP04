@@ -16,10 +16,6 @@ Cure::Cure(void) : AMateria("cure") {
 	//std::cout << "Cure: default constructor called" << std::endl;
 }
 
-// Cure::Cure(std::string const & type) : AMateria(type) {
-// 	//std::cout << "Cure: parametrized constructor called" << std::endl;
-// }
-
 Cure::Cure(const Cure& other) : AMateria(other) {
 	//std::cout << "Cure: copy constructor called" << std::endl;
 }

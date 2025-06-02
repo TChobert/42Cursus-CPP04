@@ -16,10 +16,6 @@ Ice::Ice(void) : AMateria("ice") {
 	//std::cout << "Ice: default constructor called" << std::endl;
 }
 
-// Ice::Ice(std::string const & type) : AMateria(type) {
-// 	//std::cout << "Ice: parametrized constructor called" << std::endl;
-// }
-
 Ice::Ice(const Ice& other) : AMateria(other) {
 	//std::cout << "Ice: copy constructor called" << std::endl;
 }
@@ -31,8 +27,6 @@ Ice&	Ice::operator=(const Ice& other) {
 	}
 	return (*this);
 }
-
-/// COPY TYPE = NO SENSE ???????
 
 Ice::~Ice(void) {
 	std::cout << "Ice: destructor called" << std::endl;

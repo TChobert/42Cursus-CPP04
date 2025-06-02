@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 17:00:13 by tchobert          #+#    #+#             */
-/*   Updated: 2025/05/28 17:00:40 by tchobert         ###   ########.fr       */
+/*   Created: 2025/06/02 14:28:01 by tchobert          #+#    #+#             */
+/*   Updated: 2025/06/02 14:28:59 by tchobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-# include <string>
-# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class ICharacter
-{
+class Character : public ICharacter {
+
+	private:
+
+	std::string	_name;
+	AMateria	*_inventory[4];
+
 	public:
 
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void equip(AMateria* m) = 0;
-	virtual void unequip(int idx) = 0;
-	virtual void use(int idx, ICharacter& target) = 0;
+	Character(void);
+	Character(const std::string& name);
+	Character(const Character& other);
+	Character&	operator=(const Character& other);
+	~Character(void);
+	void	equip(AMateria* m);
+	void	unequip(int idx);
+	void	use(int idx, ICharacter& target);
 };
 
 #endif
