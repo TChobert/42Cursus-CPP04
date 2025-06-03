@@ -45,17 +45,8 @@ Character&	Character::operator=(const Character& other) {
 }
 
 Character::~Character(void) {
-	for (size_t i = 0; i < 4; ++i) {
-		if (_inventory[i] != NULL) {
-			delete (_inventory[i]);
-		}
-	}
-	if (_unequipedMaterials != NULL) {
-		for (size_t i = 0; i < _unequipedMaterialsCount; ++i) {
-			delete (_unequipedMaterials[i]);
-		}
-		delete[] _unequipedMaterials;
-	}
+	deleteInventory();
+	deleteUnequipedMaterials();
 	std::cout << "Character: destructor called" << std::endl;
 }
 
@@ -112,8 +103,48 @@ void	Character::deleteUnequipedMaterials(void) {
 	_unequipedMaterialsCount = 0;
 }
 
+void	Character::saveUnequipedMaterial(int idx) {
+	if (_unequipedMaterialsCount == 0) {
+		_unequipedMaterials = new AMateria * [1];
+		*_unequipedMaterials = _inventory[idx];
+		_inventory[idx] = NULL;
+		_unequipedMaterialsCount += 1;
+		return ;
+	}
+	else {
+		AMateria	**unequipedStash = new AMateria * [_unequipedMaterialsCount + 1];
+		for (size_t i = 0; i < _unequipedMaterialsCount; ++i) {
+			unequipedStash[i] = _unequipedMaterials[i];
+			unequipedStash[_unequipedMaterialsCount + 1] = _inventory[idx];
+			_inventory[idx] = NULL;
+			delete[] _unequipedMaterials;
+			_unequipedMaterials = unequipedStash;
+			_unequipedMaterialsCount += 1;
+			return ;
+		}
+	}
+}
+
 void	Character::equip(AMateria* m) {
 	if (m == NULL) {
 		std::cout << _name << " cannot equip a NULL materia!" << std::endl;
+	}
+	for (size_t i = 0; i < INVENTORY_SIZE; ++i) {
+		if (_inventory[i] == NULL) {
+			_inventory[i] = m->clone();
+			return ;
+		}
+		std::cout << _name << ": inventory is full, cannot equip a new materia!" << std::endl;
+	}
+}
+
+void	Character::unequip(int idx) {
+	if (idx < 0 || idx > 4) {
+		std::cout << _name << ": index out of inventory" << std::endl;
+		return ;
+	}
+	if (_inventory[idx] == NULL) {
+		std::cout << _name << ": no materia equiped at " << idx << std::endl;
+		return ;
 	}
 }

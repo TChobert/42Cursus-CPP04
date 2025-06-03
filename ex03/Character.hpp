@@ -25,6 +25,12 @@ class Character : public ICharacter {
 	AMateria	*_inventory[4];
 	AMateria	**_unequipedMaterials;
 	size_t		_unequipedMaterialsCount;
+	void		setInventory(void);
+	void		deleteInventory(void);
+	void		copyInventory(AMateria * const otherInventory[]);
+	void		copyUnequipedMaterials(AMateria * const otherDroppedMaterials[]);
+	void		saveUnequipedMaterial(int idx);
+	void		deleteUnequipedMaterials(void);
 
 	public:
 
@@ -36,11 +42,6 @@ class Character : public ICharacter {
 	void	equip(AMateria* m);
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
-	void	setInventory(void);
-	void	deleteInventory(void);
-	void	copyInventory(AMateria * const otherInventory[]);
-	void	copyUnequipedMaterials(AMateria * const otherDroppedMaterials[]);
-	void	deleteUnequipedMaterials(void);
 };
 
 #endif
