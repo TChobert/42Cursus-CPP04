@@ -35,7 +35,7 @@ AMateria&	AMateria::operator=(const AMateria& other) {
 }
 
 AMateria::~AMateria(void) {
-	std::cout << "AMateria: destructor called" << std::endl;
+	//std::cout << "AMateria: destructor called" << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////

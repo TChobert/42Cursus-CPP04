@@ -29,7 +29,7 @@ Ice&	Ice::operator=(const Ice& other) {
 }
 
 Ice::~Ice(void) {
-	std::cout << "Ice: destructor called" << std::endl;
+	//std::cout << "Ice: destructor called" << std::endl;
 }
 
 Ice*	Ice::clone(void) const {

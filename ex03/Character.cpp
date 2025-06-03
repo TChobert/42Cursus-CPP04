@@ -47,7 +47,7 @@ Character&	Character::operator=(const Character& other) {
 Character::~Character(void) {
 	deleteInventory();
 	deleteUnequipedMaterials();
-	std::cout << "Character: destructor called" << std::endl;
+	//std::cout << "Character: destructor called" << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
