@@ -42,9 +42,11 @@ class Character : public ICharacter {
 	Character(const Character& other);
 	Character&	operator=(const Character& other);
 	~Character(void);
+
 	void	equip(AMateria* m);
 	void	unequip(int idx);
 	void	use(int idx, ICharacter& target);
+	std::string const&	getName(void) const;
 };
 
 #endif

@@ -121,6 +121,10 @@ void	Character::saveUnequipedMaterial(int idx) {
 	++_unequipedMaterialsCount;
 }
 
+std::string const&	Character::getName(void) const{
+	return (_name);
+}
+
 void	Character::equip(AMateria* m) {
 	if (m == NULL) {
 		std::cout << _name << " cannot equip a NULL materia!" << std::endl;
@@ -153,6 +157,7 @@ void	Character::use(int idx, ICharacter& target) {
 	}
 	if (_inventory[idx] == NULL) {
 		std::cout << _name << ": no material at this index in current inventory" << std::endl;
+		return ;
 	}
 	_inventory[idx]->use(target);
 }

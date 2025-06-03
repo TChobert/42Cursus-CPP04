@@ -26,7 +26,7 @@ class Ice : public AMateria {
 	Ice&	operator=(const Ice& other);
 	~Ice(void);
 	virtual Ice*	clone(void) const;
-	virtual void		use(ICharacter& target);
+	virtual void	use(ICharacter& target);
 };
 
 #endif

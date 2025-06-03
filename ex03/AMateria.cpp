@@ -39,3 +39,11 @@ AMateria::~AMateria(void) {
 }
 
 ///// MEMBERS FUNCTIONS /////
+
+std::string const&	AMateria::getType(void) const {
+	return (_type);
+}
+
+void	AMateria::use(ICharacter& target) {
+	(void)target;
+}

@@ -21,10 +21,10 @@ class MateriaSource : public IMateriaSource {
 
 	private:
 
-	AMateria	*_learnedMateriasList[4];
-	void		initLearnedMateriasList(void);
-	void		destroyLearnedMateriasList(void);
-	void		copyLearnedMateriasList(const AMateria * const otherList[]);
+	AMateria	*_materiasTemplates[4];
+	void		initMateriasTemplates(void);
+	void		destroyMateriasTemplates(void);
+	void		copyMateriasTemplates(const AMateria * const otherList[]);
 
 	public:
 
@@ -32,7 +32,7 @@ class MateriaSource : public IMateriaSource {
 	MateriaSource(const MateriaSource& other);
 	MateriaSource&	operator=(const MateriaSource& other);
 	~MateriaSource(void);
-	void	learnMateria(AMateria *);
+	void		learnMateria(AMateria *);
 	AMateria	*createMateria(std::string const & type);
 };
 
