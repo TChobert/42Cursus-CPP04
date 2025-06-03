@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include "ICharacter.hpp"
 
 class AMateria {
 
@@ -31,7 +32,7 @@ class AMateria {
 	virtual ~AMateria(void);
 
 	virtual AMateria*	clone(void) const = 0;
-	//virtual void		use(ICharacter& target);
+	virtual void		use(ICharacter& target);
 };
 
 #endif

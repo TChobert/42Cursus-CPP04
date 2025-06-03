@@ -106,40 +106,37 @@ void	Character::deleteUnequipedMaterials(void) {
 void	Character::saveUnequipedMaterial(int idx) {
 	if (_unequipedMaterialsCount == 0) {
 		_unequipedMaterials = new AMateria * [1];
-		*_unequipedMaterials = _inventory[idx];
-		_inventory[idx] = NULL;
-		_unequipedMaterialsCount += 1;
-		return ;
+		_unequipedMaterials[0] = _inventory[idx];
 	}
 	else {
-		AMateria	**unequipedStash = new AMateria * [_unequipedMaterialsCount + 1];
+		AMateria	**newStash = new AMateria * [_unequipedMaterialsCount + 1];
 		for (size_t i = 0; i < _unequipedMaterialsCount; ++i) {
-			unequipedStash[i] = _unequipedMaterials[i];
-			unequipedStash[_unequipedMaterialsCount + 1] = _inventory[idx];
-			_inventory[idx] = NULL;
-			delete[] _unequipedMaterials;
-			_unequipedMaterials = unequipedStash;
-			_unequipedMaterialsCount += 1;
-			return ;
+			newStash[i] = _unequipedMaterials[i];
 		}
+		newStash[_unequipedMaterialsCount] = _inventory[idx];
+		delete[] _unequipedMaterials;
+		_unequipedMaterials = newStash;
 	}
+	_inventory[idx] = NULL;
+	++_unequipedMaterialsCount;
 }
 
 void	Character::equip(AMateria* m) {
 	if (m == NULL) {
 		std::cout << _name << " cannot equip a NULL materia!" << std::endl;
+		return ;
 	}
 	for (size_t i = 0; i < INVENTORY_SIZE; ++i) {
 		if (_inventory[i] == NULL) {
 			_inventory[i] = m->clone();
 			return ;
 		}
-		std::cout << _name << ": inventory is full, cannot equip a new materia!" << std::endl;
 	}
+	std::cout << _name << ": inventory is full, cannot equip a new materia!" << std::endl;
 }
 
 void	Character::unequip(int idx) {
-	if (idx < 0 || idx > 4) {
+	if (idx < 0 || idx >= static_cast<int>(INVENTORY_SIZE)) {
 		std::cout << _name << ": index out of inventory" << std::endl;
 		return ;
 	}
@@ -147,4 +144,15 @@ void	Character::unequip(int idx) {
 		std::cout << _name << ": no materia equiped at " << idx << std::endl;
 		return ;
 	}
+	saveUnequipedMaterial(idx);
+}
+
+void	Character::use(int idx, ICharacter& target) {
+	if (idx < 0 || idx >= INVENTORY_SIZE) {
+		std::cout << _name << ": index out of inventory" << std::endl;
+	}
+	if (_inventory[idx] == NULL) {
+		std::cout << _name << ": no material at this index in current inventory" << std::endl;
+	}
+	_inventory[idx]->use(target);
 }

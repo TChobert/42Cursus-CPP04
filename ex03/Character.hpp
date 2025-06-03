@@ -13,7 +13,10 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
+# include "AMateria.hpp"
 # include "ICharacter.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
 
 # define INVENTORY_SIZE 4
 

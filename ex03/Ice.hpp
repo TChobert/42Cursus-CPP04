@@ -14,6 +14,8 @@
 # define ICE_HPP
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
+# include "Character.hpp"
 
 class Ice : public AMateria {
 
@@ -24,7 +26,7 @@ class Ice : public AMateria {
 	Ice&	operator=(const Ice& other);
 	~Ice(void);
 	virtual Ice*	clone(void) const;
-	//virtual void		use(ICharacter& target);
+	virtual void		use(ICharacter& target);
 };
 
 #endif
