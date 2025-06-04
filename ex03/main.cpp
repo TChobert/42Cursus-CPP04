@@ -18,17 +18,40 @@
 #include "MateriaSource.hpp"
 #include "Cure.hpp"
 
-int main() {
+int main(void) {
+
+	// MateriaSource content init :
+
+	std::cout << "------ MATERIA SOURCE INIT AND TESTING ------" << std::endl << std::endl;
 
 	IMateriaSource* src = new MateriaSource();
 	Ice	ice;
+
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	src->learnMateria(new Ice(ice));
 	src->learnMateria(new Cure());
 	src->learnMateria(new Cure());
+
+	// Character deep copy test
+
+	std::cout << std::endl << "------ CHARACTER DEEP COPY ------" << std::endl << std::endl;
+
+	Character original("original");
+	AMateria* tmp = src->createMateria("ice");
+	original.equip(tmp);
+
+	// Deep copy
+	Character copy = original;
+
+	// Vérifie que les deux ont des inventaires séparés
+	original.unequip(0);
+	copy.use(0, original); // doit encore fonctionner
+
+	// Multiple Materias and characters creation and comportment
+
+	std::cout << std::endl << "------ MULTIPLE CHARACTERS AND MATERIAS USAGE ------" << std::endl << std::endl;
 	ICharacter* me = new Character("me");
-	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
@@ -59,6 +82,13 @@ int main() {
 	me->unequip(2);
 	me->use(2, *bob);
 
+	tmp = src->createMateria("fire");
+	if (!tmp)
+		std::cout << "Correctly failed to create unknown materia" << std::endl;
+
+	// clean
+
+	std::cout << std::endl << "------ CLEANUP ------" << std::endl << std::endl;
 	delete bob;
 	delete me;
 	delete src;
@@ -82,26 +112,20 @@ int main() {
 //     AMateria* tmp;
 //     tmp = src->createMateria("ice");
 //     me->equip(tmp);
-// 	delete tmp;
 //     tmp = src->createMateria("ice");
 //     me->equip(tmp);
-// 	delete tmp;
 //     tmp = src->createMateria("ice");
 //     me->equip(tmp);
-// 	delete tmp;
 //     tmp = src->createMateria("ice");
 //     me->equip(tmp);
-// 	delete tmp;
 //     tmp = src->createMateria("ice");//5th should fail!
 //     me->equip(tmp);
-// 	delete tmp;
 
 //     std::cout << "----------- [Unequip on Character ME] --------------" << std::endl;
 //     me->unequip(0);
 
 //     tmp = src->createMateria("cure");//equip after unequip -> should work!
 //     me->equip(tmp);
-// 	delete tmp;
 
 
 //     std::cout << "\n========== [ Set Character B ] ==========" << std::endl;

@@ -13,23 +13,23 @@
 #include "Cure.hpp"
 
 Cure::Cure(void) : AMateria("cure") {
-	//std::cout << "Cure: default constructor called" << std::endl;
+	std::cout << GREEN << "Cure: default constructor called" << RESET << std::endl;
 }
 
 Cure::Cure(const Cure& other) : AMateria(other) {
-	//std::cout << "Cure: copy constructor called" << std::endl;
+	std::cout << GREEN << "Cure: copy constructor called" << RESET << std::endl;
 }
 
 Cure&	Cure::operator=(const Cure& other) {
 	if (this != &other) {
 		AMateria::operator=(other);
-		//std::cout << "Cure: assignement operator called" << std::endl;
+		std::cout << GREEN << "Cure: assignement operator called" << RESET << std::endl;
 	}
 	return (*this);
 }
 
 Cure::~Cure(void) {
-	//std::cout << "Cure: destructor called" << std::endl;
+	std::cout << GREEN << "Cure: destructor called" << RESET << std::endl;
 }
 
 Cure*	Cure::clone(void) const {
