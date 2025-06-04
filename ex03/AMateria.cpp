@@ -15,27 +15,27 @@
 ///// CANONICAL /////
 
 AMateria::AMateria(void) : _type("Default") {
-	//std::cout << "AMateria: default constructor called" << std::endl;
+	std::cout << YELLOW << "AMateria: default constructor called" << RESET << std::endl;
 }
 
 AMateria::AMateria(std::string const & type) : _type(type) {
-	//std::cout << "AMateria: parametrized constructor called" << std::endl;
+	std::cout << YELLOW << "AMateria: parametrized constructor called" << RESET << std::endl;
 }
 
 AMateria::AMateria(const AMateria& other) : _type(other._type) {
-	//std::cout << "AMateria copy constructor called" << std::endl;
+	std::cout << YELLOW << "AMateria copy constructor called" << RESET << std::endl;
 }
 
 AMateria&	AMateria::operator=(const AMateria& other) {
 	if (this != &other) {
 		this->_type = other._type;
-		// std::cout << "AMateria: assignation operator called" << std::endl;
 	}
+	std::cout << YELLOW << "AMateria: assignation operator called" << RESET << std::endl;
 	return (*this);
 }
 
 AMateria::~AMateria(void) {
-	//std::cout << "AMateria: destructor called" << std::endl;
+	std::cout << YELLOW << "AMateria: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////

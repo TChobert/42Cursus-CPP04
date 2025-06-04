@@ -17,19 +17,19 @@
 Character::Character(void) : _name("Default"), _unequipedMaterials(NULL),
 								_unequipedMaterialsCount(0) {
 	setInventory();
-	//std::cout << "Character: default constructor called" << std::endl;
+	std::cout << RED << "Character: default constructor called" << RESET << std::endl;
 }
 
 Character::Character(const std::string& name) : _name(name), _unequipedMaterials(NULL),
 													_unequipedMaterialsCount(0) {
 	setInventory();
-	//std::cout << "Character: parametrized constructor called" << std::endl;
+	std::cout << RED << "Character: parametrized constructor called" << RESET << std::endl;
 }
 
 Character::Character(const Character& other) : _name(other._name), _unequipedMaterialsCount(other._unequipedMaterialsCount) {
 	copyInventory(other._inventory);
 	copyUnequipedMaterials(other._unequipedMaterials);
-	//std::cout << "Character: default constructor called" << std::endl;
+	std::cout << RED << "Character: default constructor called" << RESET <<std::endl;
 }
 
 Character&	Character::operator=(const Character& other) {
@@ -41,13 +41,14 @@ Character&	Character::operator=(const Character& other) {
 		this->_unequipedMaterialsCount = other._unequipedMaterialsCount;
 		copyUnequipedMaterials(other._unequipedMaterials);
 	}
+	std::cout << RED << "Character: assignement operator called" << RESET << std::endl;
 	return (*this);
 }
 
 Character::~Character(void) {
 	deleteInventory();
 	deleteUnequipedMaterials();
-	//std::cout << "Character: destructor called" << std::endl;
+	std::cout << RED << "Character: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
@@ -77,14 +78,14 @@ void	Character::copyInventory(AMateria * const otherInventory[]) {
 	}
 }
 
-void	Character::copyUnequipedMaterials(AMateria * const otherDroppedMaterials[]) {
+void	Character::copyUnequipedMaterials(AMateria * const otherUnequipMaterials[]) {
 	if (_unequipedMaterialsCount == 0) {
 		_unequipedMaterials = NULL;
 	}
 	else {
 		_unequipedMaterials = new AMateria * [_unequipedMaterialsCount];
 		for (size_t i = 0; i < _unequipedMaterialsCount; ++i) {
-				_unequipedMaterials[i] = otherDroppedMaterials[i]->clone();
+				_unequipedMaterials[i] = otherUnequipMaterials[i]->clone();
 		}
 	}
 }
@@ -132,11 +133,12 @@ void	Character::equip(AMateria* m) {
 	}
 	for (size_t i = 0; i < INVENTORY_SIZE; ++i) {
 		if (_inventory[i] == NULL) {
-			_inventory[i] = m->clone();
+			_inventory[i] = m;
 			return ;
 		}
 	}
 	std::cout << _name << ": inventory is full, cannot equip a new materia!" << std::endl;
+	delete m;
 }
 
 void	Character::unequip(int idx) {
@@ -154,6 +156,7 @@ void	Character::unequip(int idx) {
 void	Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || idx >= INVENTORY_SIZE) {
 		std::cout << _name << ": index out of inventory" << std::endl;
+		return ;
 	}
 	if (_inventory[idx] == NULL) {
 		std::cout << _name << ": no material at this index in current inventory" << std::endl;

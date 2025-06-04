@@ -16,12 +16,13 @@
 
 MateriaSource::MateriaSource(void) {
 	initMateriasTemplates();
-	//std::cout << "MateriaSource: default constructor called" << std::endl;
+	std::cout << BLUE << "MateriaSource: default constructor called" << RESET << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
 	initMateriasTemplates();
 	copyMateriasTemplates(other._materiasTemplates);
+	std::cout << BLUE << "MateriaSource: copy constructor called" << RESET << std::endl;
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
@@ -29,12 +30,13 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
 		destroyMateriasTemplates();
 		copyMateriasTemplates(other._materiasTemplates);
 	}
+	std::cout << BLUE << "MateriaSource: assignement operator called" << RESET << std::endl;
 	return (*this);
 }
 
 MateriaSource::~MateriaSource(void) {
 	destroyMateriasTemplates();
-	//std::cout << "MateriaSource: destructor called" << std::endl;
+	std::cout << BLUE << "MateriaSource: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
@@ -64,17 +66,17 @@ void	MateriaSource::destroyMateriasTemplates(void) {
 
 void	MateriaSource::learnMateria(AMateria *materia) {
 	if (materia == NULL) {
-		std::cout << "MateriaSource: impossible to learn an empty materia" << std::endl;
+		std::cout << BLUE << "MateriaSource: impossible to learn an empty materia" << RESET <<std::endl;
 		return ;
 	}
 	for (size_t i = 0; i < MATERIAS_NUMBER; ++i) {
 		if (_materiasTemplates[i] == NULL) {
-			_materiasTemplates[i] = materia->clone();
-			delete (materia);
+			_materiasTemplates[i] = materia;
 			return ;
 		}
 	}
-	std::cout << "MateriaSource: impossible to learn a new materia. List is full" << std::endl;
+	std::cout << BLUE << "MateriaSource: impossible to learn a new materia. List is full" << RESET << std::endl;
+	delete (materia);
 }
 
 AMateria	*MateriaSource::createMateria(std::string const &type) {
@@ -83,6 +85,6 @@ AMateria	*MateriaSource::createMateria(std::string const &type) {
 			return (_materiasTemplates[i]->clone());
 		}
 	}
-	std::cout << "MateriaSource: cannot learn a nonexistent materia" << std::endl;
+	std::cout << BLUE << "MateriaSource: cannot create a nonexistent materia type" << RESET << std::endl;
 	return (0);
 }
