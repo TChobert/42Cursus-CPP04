@@ -16,6 +16,13 @@
 # include <string>
 # include <iostream>
 
+# define NC "\e[0m"
+# define YELLOW "\e[1;33m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define BLUE "\x1B[34m"
+# define RESET "\x1B[0m"
+
 class WrongAnimal {
 
 	protected:
@@ -31,7 +38,7 @@ class WrongAnimal {
 
 	void				setType(const std::string& type);
 	const std::string&	getType(void) const;
-	virtual void		makeSound(void) const;
+	void				makeSound(void) const;
 };
 
 #endif

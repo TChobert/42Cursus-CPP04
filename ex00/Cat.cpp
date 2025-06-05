@@ -16,28 +16,28 @@
 
 Cat::Cat(void) : Animal() {
 	_type = "Cat";
-	std::cout << "Cat: default constructor called" << std::endl;
+	std::cout << YELLOW << "Cat: default constructor called" << RESET << std::endl;
 }
 
 Cat::Cat(const Cat& other) : Animal(other) {
 	this->_type = other._type;
-	std::cout << "Cat: copy constructor called" << std::endl;
+	std::cout << YELLOW << "Cat: copy constructor called" << RESET << std::endl;
 }
 
 Cat&	Cat::operator=(const Cat& other) {
 	if (this != &other) {
 		Animal::operator=(other);
-		std::cout << "Cat: affectation operator called" << std::endl;
 	}
+	std::cout << YELLOW << "Cat: affectation operator called" << RESET << std::endl;
 	return (*this);
 }
 
 Cat::~Cat(void) {
-	std::cout << "Cat: destructor called" << std::endl;
+	std::cout << YELLOW << "Cat: destructor called" << RESET << std::endl;
 }
 
 ///// MEMBERS FUNCTIONS /////
 
 void	Cat::makeSound(void) const {
-	std::cout << "Meow" << std::endl;
+	std::cout << YELLOW << "Meow" << RESET << std::endl;
 }
